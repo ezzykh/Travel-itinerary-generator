@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Itinerary Builder</title>
+<meta name="description" content="Build branded travel itineraries in English and Arabic, import flights from a Sabre PNR, and download a print-ready PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/sheets.css">
+</head>
+<body>
+  <!-- Sign in (cloud mode only) -->
+  <main id="auth" class="auth" hidden>
+    <div class="auth-card" id="authCard"></div>
+  </main>
+
+  <!-- Editor -->
+  <div id="app" class="app" hidden>
+    <header class="bar">
+      <div class="bar-name"><span class="bar-mark" aria-hidden="true"></span><b id="appName">Itinerary Builder</b></div>
+      <div class="bar-lang" role="group" aria-label="PDF language">
+        <button type="button" data-lang="en">English</button>
+        <button type="button" data-lang="ar" lang="ar">عربي</button>
+        <button type="button" data-lang="bi">Both</button>
+      </div>
+      <div class="bar-actions">
+        <span class="bar-who" id="who"></span>
+        <button type="button" class="btn ghost" data-act="newTrip">New trip</button>
+        <button type="button" class="btn ghost" data-act="saveTrip">Save</button>
+        <button type="button" class="btn signal" data-act="pdf">Download PDF</button>
+        <button type="button" class="btn ghost" data-act="logout" id="btnLogout">Log out</button>
+      </div>
+    </header>
+    <div class="modebar" role="group" aria-label="View">
+      <button type="button" data-view="edit" aria-pressed="true">Edit</button>
+      <button type="button" data-view="preview" aria-pressed="false">Preview</button>
+    </div>
+    <div class="work">
+      <aside class="editor" aria-label="Itinerary details">
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <div class="pane" id="pane" role="tabpanel"></div>
+      </aside>
+      <section class="preview" aria-label="PDF preview">
+        <div class="preview-head"><span id="pageCount"></span><span class="hint" id="modeNote"></span></div>
+        <div class="sheets" id="sheets"></div>
+      </section>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
